@@ -19,7 +19,7 @@ if (target_version_range === undefined) {
 }
 
 const target_version = target_version_range.slice(1);
-const command = `yarn upgrade ${target_name}@${target_version}`;
+const command = `yarn upgrade ${target_name}@${target_version} --no-lockfile`;
 
 console.log(`> ${command}`);
 execSync(command, { stdio: [0, 1, 2] });
