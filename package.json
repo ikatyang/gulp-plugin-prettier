@@ -1,0 +1,60 @@
+{
+  "name": "gulp-plugin-prettier",
+  "version": "0.0.0-dev",
+  "description": "Gulp plugin to format code with Prettier",
+  "keywords": [
+    "gulp",
+    "gulpplugin",
+    "prettier"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "repository": "https://github.com/ikatyang/gulp-plugin-prettier",
+  "homepage": "https://github.com/ikatyang/gulp-plugin-prettier#readme",
+  "author": {
+    "name": "Ika",
+    "email": "ikatyang@gmail.com",
+    "url": "https://github.com/ikatyang"
+  },
+  "license": "MIT",
+  "scripts": {
+    "prepublish": "yarn run build",
+    "lint": "tslint -p ./tsconfig.json --type-check",
+    "test": "jest --config ./jest.json",
+    "prebuild": "rm -rf ./lib",
+    "build": "tsc -p tsconfig.build.json",
+    "format": "gulp format",
+    "format-check": "gulp format-check",
+    "release": "standard-version"
+  },
+  "dependencies": {
+    "@types/gulp-util": "^3.0.31",
+    "@types/through2": "^2.0.33",
+    "gulp-util": "^3.0.8",
+    "through2": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/gulp": "3.8.33",
+    "@types/jest": "20.0.4",
+    "@types/prettier": "1.5.0",
+    "gulp": "3.9.0",
+    "jest": "20.0.4",
+    "prettier": "1.4.0",
+    "standard-version": "4.2.0",
+    "ts-jest": "20.0.7",
+    "ts-node": "3.2.1",
+    "tslint": "5.5.0",
+    "tslint-config-ikatyang": "1.0.1",
+    "typescript": "2.4.2"
+  },
+  "peerDependencies": {
+    "gulp": "^3.9.0",
+    "prettier": "^1.4.0"
+  },
+  "engines": {
+    "node": ">= 4"
+  },
+  "files": [
+    "/lib/**/*"
+  ]
+}

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`throw unformatted.ts + reporter(error) 1`] = `[Error: File 'fixtures/unformatted.ts' was not formatted with Prettier]`;
+
+exports[`throw unformatted.ts + reporter(unexpected) 1`] = `[Error: Unexpected built-in-reporter 'unexpected']`;
+
+exports[`unformatted.css + default 1`] = `
+"h1 > a {
+  display: none;
+}
+"
+`;
+
+exports[`unformatted.ts + default 1`] = `
+"export function some_function(a) {
+  return {
+    c: a
+  };
+}
+"
+`;
+
+exports[`unformatted.ts + reporter(warning) 1`] = `"File '[36mfixtures/unformatted.ts[39m' was not formatted with Prettier"`;
+
+exports[`unformatted.ts + trailingComma(all) 1`] = `
+"export function some_function(a) {
+  return {
+    c: a,
+  };
+}
+"
+`;
