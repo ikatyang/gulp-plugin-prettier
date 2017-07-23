@@ -5,8 +5,20 @@ node_js:
 - 6
 - stable
 
+matrix:
+  fast_finish: true
+  include:
+  - node_js: stable
+    env: PEER_GULP=true
+  - node_js: stable
+    env: PEER_PRETTIER=true
+
 before_install:
 - yarn global add codecov
+
+before_script:
+- if [ "$PEER_GULP" = "true" ]; then node ./scripts/install-peer gulp; fi
+- if [ "$PEER_PRETTIER" = "true" ]; then node ./scripts/install-peer prettier; fi
 
 script:
 - yarn run lint
@@ -20,6 +32,3 @@ cache:
   yarn: true
   directories:
   - node_modules
-
-matrix:
-  fast_finish: true
