@@ -1,5 +1,7 @@
 {
+  "automerge": "minor",
+  "depTypes": [{ "depType": "dependencies", "pinVersions": false }],
   "pinVersions": true,
-  "semanticCommits": true,
-  "depTypes": [{"depType": "dependencies", "pinVersions": false}]
+  "rebaseStalePrs": true,
+  "semanticCommits": true
 }
