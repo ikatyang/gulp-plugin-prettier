@@ -28,16 +28,18 @@ export function format(
   return create_transform((text, filename) => {
     const formatted = prettier.format(text, {
       ...prettier_options,
-      filepath: prettier_options.filepath !== undefined
-        ? prettier_options.filepath
-        : filename,
+      filepath:
+        prettier_options.filepath !== undefined
+          ? prettier_options.filepath
+          : filename,
     });
 
     const different = formatted !== text;
 
-    const custom_reporter = typeof reporter === 'function'
-      ? reporter
-      : get_built_in_reporter(reporter);
+    const custom_reporter =
+      typeof reporter === 'function'
+        ? reporter
+        : get_built_in_reporter(reporter);
     custom_reporter(filename, different);
 
     return {

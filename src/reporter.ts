@@ -4,7 +4,6 @@ import * as path from 'path';
 export type CustomReporter = (filename: string, different: boolean) => void;
 
 export const enum Reporter {
-
   /**
    * do nothing
    */
@@ -16,8 +15,7 @@ export const enum Reporter {
   /**
    * print warning for the filenames of files that are different from Prettier formatting
    */
-  Warning = 'warning'
-
+  Warning = 'warning',
 }
 
 export function get_built_in_reporter(reporter: Reporter): CustomReporter {
