@@ -22,7 +22,7 @@ before_script:
 
 script:
 - yarn run lint
-- yarn run format-check
+- yarn run format-check || [ "$PEER_PRETTIER" = "true" ]
 - yarn run test -- --coverage --verbose
 
 after_script:

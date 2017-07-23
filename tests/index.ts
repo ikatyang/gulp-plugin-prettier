@@ -127,9 +127,9 @@ function create_task(
 ) {
   const name = `task-${++task_counter}`;
   const result: {
-    formatted?: string,
-    error?: Error,
-    counter: number,
+    formatted?: string;
+    error?: Error;
+    counter: number;
   } = {
     counter: 0,
   };
