@@ -1,5 +1,5 @@
 import * as gulp from 'gulp';
-import * as prettier_options from 'tslint-config-ikatyang/prettier';
+import * as prettier_options from 'prettier-config-ikatyang';
 import * as prettier from './src/index';
 
 // tslint:disable-next-line:no-var-requires
