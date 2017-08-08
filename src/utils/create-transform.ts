@@ -1,5 +1,4 @@
 import * as gulp_util from 'gulp-util';
-import * as path from 'path';
 import * as through from 'through2';
 
 // tslint:disable-next-line:no-unused-variable
