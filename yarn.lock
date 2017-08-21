@@ -59,8 +59,8 @@
     "@types/node" "*"
 
 "@types/vinyl@*":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@types/vinyl/-/vinyl-2.0.0.tgz#fd213bf7f4136dde21fe1895500b12c186f8c268"
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@types/vinyl/-/vinyl-2.0.1.tgz#6b414dfdcd4a785e8e76e87565ed29e79490d9b7"
   dependencies:
     "@types/node" "*"
 
