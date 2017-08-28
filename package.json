@@ -39,7 +39,7 @@
     "@types/prettier": "1.5.0",
     "gulp": "3.9.1",
     "jest": "20.0.4",
-    "prettier": "1.5.3",
+    "prettier": "1.6.0",
     "prettier-config-ikatyang": "1.1.1",
     "standard-version": "4.2.0",
     "ts-jest": "20.0.10",
