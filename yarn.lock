@@ -42,9 +42,9 @@
     "@types/node" "*"
     "@types/q" "^0"
 
-"@types/prettier@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-1.5.0.tgz#35ed47a24bd92bcab439c3670742219499a6b717"
+"@types/prettier@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-1.6.0.tgz#81db8cd7cd2be1d75fdbe9ec306f3f7edab4476c"
   dependencies:
     "@types/babel-types" "*"
 
@@ -2544,8 +2544,8 @@ parse-filepath@^1.0.1:
     path-root "^0.1.1"
 
 parse-github-repo-url@^1.3.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/parse-github-repo-url/-/parse-github-repo-url-1.4.0.tgz#286c53e2c9962e0641649ee3ac9508fca4dd959c"
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/parse-github-repo-url/-/parse-github-repo-url-1.4.1.tgz#9e7d8bb252a6cb6ba42595060b7bf6df3dbc1f50"
 
 parse-glob@^3.0.4:
   version "3.0.4"
@@ -3115,8 +3115,8 @@ supports-color@^3.1.2:
     has-flag "^1.0.0"
 
 supports-color@^4.0.0:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-4.2.1.tgz#65a4bb2631e90e02420dba5554c375a4754bb836"
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-4.4.0.tgz#883f7ddabc165142b2a61427f3352ded195d1a3e"
   dependencies:
     has-flag "^2.0.0"
 
