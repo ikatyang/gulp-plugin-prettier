@@ -20,6 +20,7 @@ export const enum Reporter {
 
 export function get_built_in_reporter(reporter: Reporter): CustomReporter {
   switch (reporter) {
+    // istanbul ignore next
     case Reporter.None:
       return () => {
         // do nothing
