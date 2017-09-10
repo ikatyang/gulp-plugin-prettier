@@ -1,5 +1,5 @@
 import * as gulp_util from 'gulp-util';
-import * as through from 'through2';
+import through = require('through2');
 
 // tslint:disable-next-line:no-unused-variable
 import stream = require('stream');
