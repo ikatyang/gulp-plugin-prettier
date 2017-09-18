@@ -140,7 +140,7 @@ function create_task(
     return !catch_result
       ? stream
       : stream.pipe(
-          create_transform(text => {
+          create_transform(async text => {
             result.counter++;
             result.formatted = text;
             return { formatted: text, different: false };

@@ -25,8 +25,13 @@ export function format(
   prettier_options: Options = {},
   { reporter = Reporter.Warning, filter = false }: PluginOptions = {},
 ) {
-  return create_transform((text, filename) => {
+  return create_transform(async (text, filename) => {
+    const resolved_config = await (typeof prettier.resolveConfig === 'function'
+      ? prettier.resolveConfig(filename)
+      : Promise.resolve(null));
+
     const formatted = prettier.format(text, {
+      ...resolved_config,
       ...prettier_options,
       filepath:
         prettier_options.filepath !== undefined
