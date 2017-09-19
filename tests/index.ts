@@ -16,6 +16,26 @@ test('unformatted.ts + default', done => {
   });
 });
 
+test('unformatted.js + default', done => {
+  const task = create_task('with_config/unformatted.js', undefined, undefined);
+  gulp.start(task.name, () => {
+    expect(task.result.formatted).toMatchSnapshot();
+    done();
+  });
+});
+
+test('unformatted.js + trailingComma(none)', done => {
+  const task = create_task(
+    'with_config/unformatted.js',
+    { trailingComma: 'none' },
+    undefined,
+  );
+  gulp.start(task.name, () => {
+    expect(task.result.formatted).toMatchSnapshot();
+    done();
+  });
+});
+
 test('unformatted.css + default', done => {
   const task = create_task('unformatted.css', undefined, undefined);
   gulp.start(task.name, () => {
