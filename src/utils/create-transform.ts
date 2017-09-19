@@ -32,25 +32,20 @@ export function create_transform(transformer: Transformer) {
         return;
       }
       const output_file: gulp_util.File = input_file.clone();
-      try {
-        const text = input_file.contents.toString('utf8');
-        transformer(text, input_file.path)
-          .then(({ formatted, different }) => {
-            if (formatted === null) {
-              output_file.contents = null;
-            } else if (different) {
-              output_file.contents = new Buffer(formatted);
-            }
-            callback(null, output_file);
-          })
-          .catch(e => {
-            const error = e as Error;
-            callback(new gulp_util.PluginError(package_name, error.message));
-          });
-      } catch (e) {
-        const error = e as Error;
-        callback(new gulp_util.PluginError(package_name, error.message));
-      }
+      const text = input_file.contents.toString('utf8');
+      transformer(text, input_file.path)
+        .then(({ formatted, different }) => {
+          if (formatted === null) {
+            output_file.contents = null;
+          } else if (different) {
+            output_file.contents = new Buffer(formatted);
+          }
+          callback(null, output_file);
+        })
+        .catch(e => {
+          const error = e as Error;
+          callback(new gulp_util.PluginError(package_name, error.message));
+        });
     },
   );
 }
