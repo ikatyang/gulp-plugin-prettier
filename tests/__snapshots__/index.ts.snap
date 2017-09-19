@@ -20,6 +20,15 @@ exports[`unformatted.js + default 1`] = `
 "
 `;
 
+exports[`unformatted.js + old prettier 1`] = `
+"export function some_function(a) {
+  return {
+    c: a + \\"b\\"
+  };
+}
+"
+`;
+
 exports[`unformatted.js + trailingComma(none) 1`] = `
 "export function some_function(a) {
 	return {
