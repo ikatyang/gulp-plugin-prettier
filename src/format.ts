@@ -26,6 +26,7 @@ export function format(
   { reporter = Reporter.Warning, filter = false }: PluginOptions = {},
 ) {
   return create_transform(async (text, filename) => {
+    // tslint:disable-next-line:strict-type-predicates
     const resolved_config = await (typeof prettier.resolveConfig === 'function'
       ? prettier.resolveConfig(filename)
       : Promise.resolve(null));
