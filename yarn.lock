@@ -10,7 +10,7 @@
   version "0.4.31"
   resolved "https://registry.yarnpkg.com/@types/chalk/-/chalk-0.4.31.tgz#a31d74241a6b1edbb973cf36d97a2896834a51f9"
 
-"@types/gulp-util@^3.0.31":
+"@types/gulp-util@3.0.31":
   version "3.0.31"
   resolved "https://registry.yarnpkg.com/@types/gulp-util/-/gulp-util-3.0.31.tgz#272e298220365717e1f7f979b50ebadb44297cbf"
   dependencies:
@@ -52,7 +52,7 @@
   version "0.0.37"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-0.0.37.tgz#7d6a934b35ee2f0ed0646d286eba559599021c9e"
 
-"@types/through2@*", "@types/through2@^2.0.33":
+"@types/through2@*", "@types/through2@2.0.33":
   version "2.0.33"
   resolved "https://registry.yarnpkg.com/@types/through2/-/through2-2.0.33.tgz#1ff2e88a100dfb5b140e7bb98791f1194400d131"
   dependencies:
