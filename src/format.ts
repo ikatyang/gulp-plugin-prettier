@@ -19,17 +19,26 @@ export interface PluginOptions {
    * omit formatted files
    */
   filter?: boolean;
+  /**
+   * include rules from Prettier config files, e.g. .prettierrc
+   */
+  configFile?: boolean;
 }
 
 export function format(
   prettier_options: Options = {},
-  { reporter = Reporter.Warning, filter = false }: PluginOptions = {},
+  {
+    reporter = Reporter.Warning,
+    filter = false,
+    configFile: config_file = true,
+  }: PluginOptions = {},
 ) {
   return create_transform(async (text, filename) => {
     // tslint:disable-next-line:strict-type-predicates
-    const resolved_config = await (typeof prettier.resolveConfig === 'function'
-      ? prettier.resolveConfig(filename)
-      : Promise.resolve(null));
+    const resolved_config =
+      config_file && typeof prettier.resolveConfig === 'function'
+        ? await prettier.resolveConfig(filename)
+        : null;
 
     const formatted = prettier.format(text, {
       ...resolved_config,

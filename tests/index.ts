@@ -36,6 +36,28 @@ test('unformatted.js + trailingComma(none)', done => {
   });
 });
 
+test('unformatted.js + configFile(false)', done => {
+  const task = create_task('with_config/unformatted.js', undefined, {
+    configFile: false,
+  });
+  gulp.start(task.name, () => {
+    expect(task.result.formatted).toMatchSnapshot();
+    done();
+  });
+});
+
+test('unformatted.js + trailingComma(all) + configFile(false)', done => {
+  const task = create_task(
+    'with_config/unformatted.js',
+    { trailingComma: 'all' },
+    { configFile: false },
+  );
+  gulp.start(task.name, () => {
+    expect(task.result.formatted).toMatchSnapshot();
+    done();
+  });
+});
+
 test('unformatted.js + old prettier', done => {
   const resolve_config = require('prettier').resolveConfig;
   require('prettier').resolveConfig = undefined;
