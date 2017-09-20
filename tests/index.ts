@@ -16,6 +16,65 @@ test('unformatted.ts + default', done => {
   });
 });
 
+test('unformatted.js + default', done => {
+  const task = create_task('with_config/unformatted.js', undefined, undefined);
+  gulp.start(task.name, () => {
+    expect(task.result.formatted).toMatchSnapshot();
+    done();
+  });
+});
+
+test('unformatted.js + trailingComma(none)', done => {
+  const task = create_task(
+    'with_config/unformatted.js',
+    { trailingComma: 'none' },
+    undefined,
+  );
+  gulp.start(task.name, () => {
+    expect(task.result.formatted).toMatchSnapshot();
+    done();
+  });
+});
+
+test('unformatted.js + configFile(false)', done => {
+  const task = create_task('with_config/unformatted.js', undefined, {
+    configFile: false,
+  });
+  gulp.start(task.name, () => {
+    expect(task.result.formatted).toMatchSnapshot();
+    done();
+  });
+});
+
+test('unformatted.js + trailingComma(all) + configFile(false)', done => {
+  const task = create_task(
+    'with_config/unformatted.js',
+    { trailingComma: 'all' },
+    { configFile: false },
+  );
+  gulp.start(task.name, () => {
+    expect(task.result.formatted).toMatchSnapshot();
+    done();
+  });
+});
+
+test('unformatted.js + old prettier', done => {
+  const resolve_config = require('prettier').resolveConfig;
+  require('prettier').resolveConfig = undefined;
+
+  const task = create_task(
+    'with_config/unformatted.js',
+    { trailingComma: 'none' },
+    undefined,
+  );
+  gulp.start(task.name, () => {
+    expect(task.result.formatted).toMatchSnapshot();
+    done();
+
+    require('prettier').resolveConfig = resolve_config;
+  });
+});
+
 test('unformatted.css + default', done => {
   const task = create_task('unformatted.css', undefined, undefined);
   gulp.start(task.name, () => {
@@ -140,7 +199,7 @@ function create_task(
     return !catch_result
       ? stream
       : stream.pipe(
-          create_transform(text => {
+          create_transform(async text => {
             result.counter++;
             result.formatted = text;
             return { formatted: text, different: false };

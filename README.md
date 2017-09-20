@@ -82,6 +82,11 @@ export interface PluginOptions {
    * omit formatted files
    */
   filter?: boolean;
+  /**
+   * default: true
+   * include rules from Prettier config files, e.g. .prettierrc
+   */
+  configFile?: boolean;
 }
 
 export const enum Reporter {

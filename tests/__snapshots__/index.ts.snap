@@ -11,6 +11,51 @@ exports[`unformatted.css + default 1`] = `
 "
 `;
 
+exports[`unformatted.js + configFile(false) 1`] = `
+"export function some_function(a) {
+  return {
+    c: a + \\"b\\"
+  };
+}
+"
+`;
+
+exports[`unformatted.js + default 1`] = `
+"export function some_function(a) {
+	return {
+		c: a + 'b',
+	}
+}
+"
+`;
+
+exports[`unformatted.js + old prettier 1`] = `
+"export function some_function(a) {
+  return {
+    c: a + \\"b\\"
+  };
+}
+"
+`;
+
+exports[`unformatted.js + trailingComma(all) + configFile(false) 1`] = `
+"export function some_function(a) {
+  return {
+    c: a + \\"b\\",
+  };
+}
+"
+`;
+
+exports[`unformatted.js + trailingComma(none) 1`] = `
+"export function some_function(a) {
+	return {
+		c: a + 'b'
+	}
+}
+"
+`;
+
 exports[`unformatted.ts + default 1`] = `
 "export function some_function(a) {
   return {
