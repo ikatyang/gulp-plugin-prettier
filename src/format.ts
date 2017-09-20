@@ -34,9 +34,8 @@ export function format(
   }: PluginOptions = {},
 ) {
   return create_transform(async (text, filename) => {
-    // tslint:disable-next-line:strict-type-predicates
     const resolved_config =
-      config_file && typeof prettier.resolveConfig === 'function'
+      config_file && typeof prettier.resolveConfig === 'function' // tslint:disable-line:strict-type-predicates
         ? await prettier.resolveConfig(filename)
         : null;
 
