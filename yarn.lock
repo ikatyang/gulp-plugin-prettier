@@ -6,18 +6,14 @@
   version "6.25.1"
   resolved "https://registry.yarnpkg.com/@types/babel-types/-/babel-types-6.25.1.tgz#ce8f126a4403e11e1b0033a424f11638afac7889"
 
-"@types/chalk@*":
-  version "0.4.31"
-  resolved "https://registry.yarnpkg.com/@types/chalk/-/chalk-0.4.31.tgz#a31d74241a6b1edbb973cf36d97a2896834a51f9"
-
-"@types/gulp-util@3.0.31":
-  version "3.0.31"
-  resolved "https://registry.yarnpkg.com/@types/gulp-util/-/gulp-util-3.0.31.tgz#272e298220365717e1f7f979b50ebadb44297cbf"
+"@types/gulp-util@3.0.33":
+  version "3.0.33"
+  resolved "https://registry.yarnpkg.com/@types/gulp-util/-/gulp-util-3.0.33.tgz#5acf714d32806cbb491ae8a4905745e39d4a17ba"
   dependencies:
-    "@types/chalk" "*"
     "@types/node" "*"
     "@types/through2" "*"
     "@types/vinyl" "*"
+    chalk "^2.2.0"
 
 "@types/gulp@3.8.33":
   version "3.8.33"
@@ -545,6 +541,14 @@ chalk@^2.0.0, chalk@^2.0.1:
 chalk@^2.1.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.2.0.tgz#477b3bf2f9b8fd5ca9e429747e37f724ee7af240"
+  dependencies:
+    ansi-styles "^3.1.0"
+    escape-string-regexp "^1.0.5"
+    supports-color "^4.0.0"
+
+chalk@^2.2.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.3.0.tgz#b5ea48efc9c1793dccc9b4767c93914d3f2d52ba"
   dependencies:
     ansi-styles "^3.1.0"
     escape-string-regexp "^1.0.5"
