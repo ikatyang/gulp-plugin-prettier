@@ -15,9 +15,9 @@
     "@types/vinyl" "*"
     chalk "^2.2.0"
 
-"@types/gulp@3.8.33":
-  version "3.8.33"
-  resolved "https://registry.yarnpkg.com/@types/gulp/-/gulp-3.8.33.tgz#b1b076820738c9c4eb7808cd926bff1683e1c2ab"
+"@types/gulp@3.8.34":
+  version "3.8.34"
+  resolved "https://registry.yarnpkg.com/@types/gulp/-/gulp-3.8.34.tgz#4feafe428900cd818e104415e7d4e9f74c104b94"
   dependencies:
     "@types/node" "*"
     "@types/orchestrator" "*"
