@@ -35,7 +35,7 @@
     "@types/gulp": "3.8.35",
     "@types/gulp-util": "3.0.34",
     "@types/jest": "21.1.5",
-    "@types/prettier": "1.7.1",
+    "@types/prettier": "1.7.2",
     "@types/through2": "2.0.33",
     "gulp": "3.9.1",
     "jest": "21.2.1",
