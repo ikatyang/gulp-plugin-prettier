@@ -44,7 +44,7 @@ export function get_built_in_reporter(reporter: Reporter): CustomReporter {
 
 function create_error_message(filename: string, colored: boolean) {
   const relative_filename = path.relative(process.cwd(), filename);
-  return `File '${colored
-    ? gulp_util.colors.cyan(relative_filename)
-    : relative_filename}' was not formatted with Prettier`;
+  return `File '${
+    colored ? gulp_util.colors.cyan(relative_filename) : relative_filename
+  }' was not formatted with Prettier`;
 }
