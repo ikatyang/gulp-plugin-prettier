@@ -32,7 +32,7 @@
     "through2": "^2.0.3"
   },
   "devDependencies": {
-    "@types/gulp": "3.8.35",
+    "@types/gulp": "3.8.36",
     "@types/gulp-util": "3.0.34",
     "@types/jest": "21.1.9",
     "@types/prettier": "1.9.0",
