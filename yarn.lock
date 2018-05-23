@@ -34,9 +34,9 @@
     "@types/node" "*"
     "@types/q" "*"
 
-"@types/prettier@1.12.2":
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-1.12.2.tgz#4a37f0aa8ed20366ada6fa7994b1c6dfe787fdd1"
+"@types/prettier@1.12.3":
+  version "1.12.3"
+  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-1.12.3.tgz#587dbaa02cf2a479cb5ba3f52b6ba2b07c13b340"
 
 "@types/q@*":
   version "1.5.0"
