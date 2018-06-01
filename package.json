@@ -34,7 +34,7 @@
   "devDependencies": {
     "@types/gulp": "3.8.36",
     "@types/gulp-util": "3.0.34",
-    "@types/jest": "21.1.10",
+    "@types/jest": "22.2.3",
     "@types/prettier": "1.12.4",
     "@types/through2": "2.0.33",
     "gulp": "3.9.1",
