@@ -32,12 +32,12 @@
     "through2": "^2.0.3"
   },
   "devDependencies": {
-    "@types/gulp": "3.8.36",
+    "@types/gulp": "4.0.6",
     "@types/gulp-util": "3.0.34",
     "@types/jest": "21.1.10",
     "@types/prettier": "1.13.2",
     "@types/through2": "2.0.34",
-    "gulp": "3.9.1",
+    "gulp": "4.0.2",
     "jest": "21.2.1",
     "prettier": "1.14.3",
     "prettier-config-ikatyang": "1.1.1",
@@ -50,7 +50,7 @@
     "typescript": "2.9.2"
   },
   "peerDependencies": {
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.0 || ^4.0.0",
     "prettier": "^1.4.0"
   },
   "engines": {
