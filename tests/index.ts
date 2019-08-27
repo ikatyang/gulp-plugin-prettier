@@ -1,9 +1,8 @@
 import * as gulp from 'gulp';
-import * as gulp_util from 'gulp-util';
 import * as prettier from '../src/index';
 import { create_transform } from '../src/utils/create-transform';
 
-const log_spy = jest.spyOn(gulp_util, 'log');
+jest.mock('fancy-log');
 const fixture_dirname = `${__dirname}/../fixtures`;
 
 beforeEach(() => jest.resetAllMocks());
@@ -110,6 +109,7 @@ test('unformatted.ts + reporter(warning)', done => {
     reporter: prettier.Reporter.Warning,
   });
   gulp.start(task.name, () => {
+    const log_spy = require('fancy-log');
     const message = log_spy.mock.calls[0][0];
     expect(message).toMatchSnapshot();
     done();
