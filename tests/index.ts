@@ -1,210 +1,181 @@
-import * as gulp from 'gulp';
+import * as fs from 'fs';
+import * as path from 'path';
+import Vinyl = require('vinyl');
 import * as prettier from '../src/index';
-import { create_transform } from '../src/utils/create-transform';
 
 jest.mock('fancy-log');
 const fixture_dirname = `${__dirname}/../fixtures`;
 
 beforeEach(() => jest.resetAllMocks());
 
-test('unformatted.ts + default', done => {
-  const task = create_task('unformatted.ts', undefined, undefined);
-  gulp.start(task.name, () => {
-    expect(task.result.formatted).toMatchSnapshot();
-    done();
-  });
+test('unformatted.ts + default', async () => {
+  const result = await create_stream('unformatted.ts', undefined, undefined);
+  expect(result.formatted).toMatchSnapshot();
 });
 
-test('unformatted.js + default', done => {
-  const task = create_task('with_config/unformatted.js', undefined, undefined);
-  gulp.start(task.name, () => {
-    expect(task.result.formatted).toMatchSnapshot();
-    done();
-  });
+test('unformatted.js + default', async () => {
+  const result = await create_stream(
+    'with_config/unformatted.js',
+    undefined,
+    undefined,
+  );
+
+  expect(result.formatted).toMatchSnapshot();
 });
 
-test('unformatted.js + trailingComma(none)', done => {
-  const task = create_task(
+test('unformatted.js + trailingComma(none)', async () => {
+  const result = await create_stream(
     'with_config/unformatted.js',
     { trailingComma: 'none' },
     undefined,
   );
-  gulp.start(task.name, () => {
-    expect(task.result.formatted).toMatchSnapshot();
-    done();
-  });
+  expect(result.formatted).toMatchSnapshot();
 });
 
-test('unformatted.js + configFile(false)', done => {
-  const task = create_task('with_config/unformatted.js', undefined, {
+test('unformatted.js + configFile(false)', async () => {
+  const result = await create_stream('with_config/unformatted.js', undefined, {
     configFile: false,
   });
-  gulp.start(task.name, () => {
-    expect(task.result.formatted).toMatchSnapshot();
-    done();
-  });
+  expect(result.formatted).toMatchSnapshot();
 });
 
-test('unformatted.js + trailingComma(all) + configFile(false)', done => {
-  const task = create_task(
+test('unformatted.js + trailingComma(all) + configFile(false)', async () => {
+  const result = await create_stream(
     'with_config/unformatted.js',
     { trailingComma: 'all' },
     { configFile: false },
   );
-  gulp.start(task.name, () => {
-    expect(task.result.formatted).toMatchSnapshot();
-    done();
-  });
+  expect(result.formatted).toMatchSnapshot();
 });
 
-test('unformatted.js + old prettier', done => {
+test('unformatted.js + old prettier', async () => {
   const resolve_config = require('prettier').resolveConfig;
   require('prettier').resolveConfig = undefined;
 
-  const task = create_task(
+  const result = await create_stream(
     'with_config/unformatted.js',
     { trailingComma: 'none' },
     undefined,
   );
-  gulp.start(task.name, () => {
-    expect(task.result.formatted).toMatchSnapshot();
-    done();
+  expect(result.formatted).toMatchSnapshot();
 
-    require('prettier').resolveConfig = resolve_config;
-  });
+  require('prettier').resolveConfig = resolve_config;
 });
 
-test('unformatted.css + default', done => {
-  const task = create_task('unformatted.css', undefined, undefined);
-  gulp.start(task.name, () => {
-    expect(task.result.formatted).toMatchSnapshot();
-    done();
-  });
+test('unformatted.css + default', async () => {
+  const result = await create_stream('unformatted.css', undefined, undefined);
+  expect(result.formatted).toMatchSnapshot();
 });
 
-test('unformatted.ts + trailingComma(all)', done => {
-  const task = create_task(
+test('unformatted.ts + trailingComma(all)', async () => {
+  const result = await create_stream(
     'unformatted.ts',
     { trailingComma: 'all' },
     undefined,
   );
-  gulp.start(task.name, () => {
-    expect(task.result.formatted).toMatchSnapshot();
-    done();
-  });
+
+  expect(result.formatted).toMatchSnapshot();
 });
 
-test('formatted.ts + reporter(error)', done => {
-  const task = create_task('formatted.ts', undefined, {
+test('formatted.ts + reporter(error)', async () => {
+  const result = await create_stream('formatted.ts', undefined, {
     reporter: prettier.Reporter.Error,
   });
-  gulp.start(task.name, () => {
-    expect(task.result.error).toBeFalsy();
-    done();
-  });
+  expect(result).toBeDefined();
 });
 
-test('unformatted.ts + reporter(warning)', done => {
-  const task = create_task('unformatted.ts', undefined, {
+test('unformatted.ts + reporter(warning)', async () => {
+  await create_stream('unformatted.ts', undefined, {
     reporter: prettier.Reporter.Warning,
   });
-  gulp.start(task.name, () => {
-    const log_spy = require('fancy-log');
-    const message = log_spy.mock.calls[0][0];
-    expect(message).toMatchSnapshot();
-    done();
-  });
+  const log_spy = require('fancy-log');
+  const message = log_spy.mock.calls[0][0];
+  expect(message).toMatchSnapshot();
 });
 
-test('formatted.ts + reporter(custom)', done => {
+test('formatted.ts + reporter(custom)', async () => {
   let counter = 0;
   const custom_reporter: prettier.CustomReporter = () => {
     counter++;
   };
-  const task = create_task('formatted.ts', undefined, {
+  await create_stream('formatted.ts', undefined, {
     reporter: custom_reporter,
   });
-  gulp.start(task.name, () => {
-    expect(counter).toBe(1);
-    done();
-  });
+  expect(counter).toBe(1);
 });
 
-test('formatted.ts + filter(true)', done => {
-  const task = create_task('formatted.ts', undefined, { filter: true });
-  gulp.start(task.name, () => {
-    expect(task.result.counter).toBe(0);
-    done();
+test('formatted.ts + filter(true)', async () => {
+  const result = await create_stream('formatted.ts', undefined, {
+    filter: true,
   });
+  expect(result.counter).toBe(0);
 });
 
-test('throw unformatted.ts + reporter(error)', done => {
-  const task = create_task(
-    'unformatted.ts',
-    undefined,
-    { reporter: prettier.Reporter.Error },
-    false,
-  );
-  gulp.start(task.name, error => {
+test('throw unformatted.ts + reporter(error)', async () => {
+  try {
+    await create_stream('unformatted.ts', undefined, {
+      reporter: prettier.Reporter.Error,
+    });
+  } catch (error) {
     expect(error).toMatchSnapshot();
-    done();
-  });
+  }
 });
 
-test(`throw unformatted.css + filepath('')`, done => {
-  const task = create_task(
-    'unformatted.css',
-    { filepath: '' },
-    undefined,
-    false,
-  );
-  gulp.start(task.name, error => {
+test(`throw unformatted.css + filepath('')`, async () => {
+  try {
+    await create_stream('unformatted.css', { filepath: '' }, undefined);
+  } catch (error) {
     expect(error).toBeTruthy();
-    done();
-  });
+  }
 });
 
-test('throw unformatted.ts + reporter(unexpected)', done => {
-  const task = create_task(
-    'unformatted.ts',
-    undefined,
-    { reporter: 'unexpected' as any },
-    false,
-  );
-  gulp.start(task.name, error => {
+test('throw unformatted.ts + reporter(unexpected)', async () => {
+  try {
+    await create_stream('unformatted.ts', undefined, {
+      reporter: 'unexpected' as any,
+    });
+  } catch (error) {
     expect(error).toMatchSnapshot();
-    done();
-  });
+  }
 });
 
-let task_counter = 0;
-function create_task(
+interface TestResult {
+  formatted: string | null;
+  counter: number;
+}
+
+function create_stream(
   fixture_filename: string,
   prettier_options: undefined | prettier.Options,
   plugin_options: undefined | prettier.PluginOptions,
-  catch_result: boolean = true,
-) {
-  const name = `task-${++task_counter}`;
-  const result: {
-    formatted?: string;
-    error?: Error;
-    counter: number;
-  } = {
-    counter: 0,
-  };
-  gulp.task(name, () => {
-    const stream = gulp
-      .src(`${fixture_dirname}/${fixture_filename}`)
-      .pipe(prettier.format(prettier_options, plugin_options));
-    return !catch_result
-      ? stream
-      : stream.pipe(
-          create_transform(async text => {
-            result.counter++;
-            result.formatted = text;
-            return { formatted: text, different: false };
-          }),
-        );
+): Promise<TestResult> {
+  let counter = 0;
+  return new Promise((resolve, reject) => {
+    const stream = prettier.format(prettier_options, plugin_options);
+
+    stream.on('data', (file: Vinyl) => {
+      if (file.contents !== null) {
+        resolve({
+          formatted: file.contents.toString(),
+          counter: ++counter,
+        });
+      } else {
+        resolve({
+          formatted: null,
+          counter,
+        });
+      }
+    });
+    stream.on('error', reject);
+
+    const fixture_path = path.join(fixture_dirname, fixture_filename);
+    stream.end(
+      new Vinyl({
+        path: fixture_path,
+        contents: fs.existsSync(fixture_path)
+          ? Buffer.from(fs.readFileSync(fixture_path))
+          : null,
+      }),
+    );
   });
-  return { name, result };
 }
