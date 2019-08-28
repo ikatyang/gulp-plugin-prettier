@@ -36,7 +36,7 @@ export function create_transform(transformer: Transformer) {
         if (formatted === null) {
           output_file.contents = null;
         } else if (different) {
-          output_file.contents = new Buffer(formatted);
+          output_file.contents = Buffer.from(formatted);
         }
         callback(null, output_file);
       })
