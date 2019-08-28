@@ -29,19 +29,19 @@ import * as gulp from 'gulp';
 import * as prettier from 'gulp-plugin-prettier';
 
 // replace unformatted with formatted
-gulp.task('format', () =>
-  gulp.src(['./src/**/*.ts', './gulpfile.ts'])
+function format() {
+  return gulp.src(['./src/**/*.ts', './gulpfile.ts'])
     .pipe(prettier.format({ singleQuote: true }))
-    .pipe(gulp.dest(file => file.base)),
-);
+    .pipe(gulp.dest(file => file.base));
+}
 
 // throw error if there is unformatted file
-gulp.task('format-check', () =>
+function format_check() {
   gulp.src(['./src/**/*.ts', './gulpfile.ts'])
     .pipe(
       prettier.format({ singleQuote: true }, { reporter: prettier.Reporter.Error }),
-    ),
-);
+    );
+}
 ```
 
 (gulpfile.js)
@@ -51,17 +51,17 @@ const gulp = require('gulp');
 const prettier = require('gulp-plugin-prettier');
 
 // replace unformatted with formatted
-gulp.task('format', () =>
-  gulp.src(['./src/**/*.js', './gulpfile.js'])
+function format() {
+  return gulp.src(['./src/**/*.js', './gulpfile.js'])
     .pipe(prettier.format({ singleQuote: true }))
-    .pipe(gulp.dest(file => file.base))
-);
+    .pipe(gulp.dest(file => file.base));
+}
 
 // throw error if there is unformatted file
-gulp.task('format-check', () =>
-  gulp.src(['./src/**/*.js', './gulpfile.js'])
-    .pipe(prettier.format({ singleQuote: true }, { reporter: 'error' }))
-);
+function format_check() {
+  return gulp.src(['./src/**/*.js', './gulpfile.js'])
+    .pipe(prettier.format({ singleQuote: true }, { reporter: 'error' }));
+}
 ```
 
 ## API

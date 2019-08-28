@@ -19,7 +19,7 @@ before_script:
 
 script:
 - yarn run lint
-- yarn run format-check
+- yarn run format_check
 - yarn run test -- --coverage --verbose
 
 after_script:
