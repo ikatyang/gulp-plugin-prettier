@@ -1,5 +1,5 @@
-import * as log from 'fancy-log';
 import * as colors from 'ansi-colors';
+import log = require('fancy-log');
 import * as path from 'path';
 
 export type CustomReporter = (filename: string, different: boolean) => void;

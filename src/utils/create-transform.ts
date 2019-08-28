@@ -1,6 +1,6 @@
-import * as Vinyl from 'vinyl';
-import * as PluginError from 'plugin-error';
+import PluginError = require('plugin-error');
 import through = require('through2');
+import Vinyl = require('vinyl');
 
 // tslint:disable-next-line:no-unused-variable
 import stream = require('stream');
