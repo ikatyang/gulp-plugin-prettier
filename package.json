@@ -56,11 +56,11 @@
     "typescript": "2.9.2"
   },
   "peerDependencies": {
-    "gulp": "^4.0.0",
+    "gulp": "^3.9.0",
     "prettier": "^1.4.0"
   },
   "engines": {
-    "node": ">= 6"
+    "node": ">= 4"
   },
   "files": [
     "/lib/**/*"
