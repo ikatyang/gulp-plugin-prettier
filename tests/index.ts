@@ -144,6 +144,7 @@ interface TestResult {
   counter: number;
 }
 
+// tslint:disable-next-line promise-function-async
 function create_stream(
   fixture_filename: string,
   prettier_options: undefined | prettier.Options,
