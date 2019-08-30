@@ -1,14 +1,13 @@
 language: node_js
 
 node_js:
-- 4
 - 6
 - stable
 
 matrix:
   fast_finish: true
   include:
-  - node_js: stable
+  - node_js: 10
     env: PEER_GULP=true
 
 before_install:
