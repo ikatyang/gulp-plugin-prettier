@@ -1,4 +1,5 @@
-import * as gulp_util from 'gulp-util';
+import * as colors from 'ansi-colors';
+import log = require('fancy-log');
 import * as path from 'path';
 
 export type CustomReporter = (filename: string, different: boolean) => void;
@@ -34,7 +35,7 @@ export function get_built_in_reporter(reporter: Reporter): CustomReporter {
     case Reporter.Warning:
       return (filename, different) => {
         if (different) {
-          gulp_util.log(create_error_message(filename, true));
+          log(create_error_message(filename, true));
         }
       };
     default:
@@ -45,6 +46,6 @@ export function get_built_in_reporter(reporter: Reporter): CustomReporter {
 function create_error_message(filename: string, colored: boolean) {
   const relative_filename = path.relative(process.cwd(), filename);
   return `File '${
-    colored ? gulp_util.colors.cyan(relative_filename) : relative_filename
+    colored ? colors.cyan(relative_filename) : relative_filename
   }' was not formatted with Prettier`;
 }

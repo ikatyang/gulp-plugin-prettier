@@ -1,18 +1,19 @@
-const path = require('path');
-const { execSync } = require('child_process');
+const path = require("path");
+const fs = require("fs");
+const { execSync } = require("child_process");
 
 const argv = process.argv.slice(2);
 
 if (argv.length === 0) {
   throw new Error(
-    `Usage: node path/to/${path.basename(__filename)} <package-name>`,
+    `Usage: node path/to/${path.basename(__filename)} <package-name>`
   );
 }
 
 const package_json = require(`${__dirname}/../package.json`);
 
 const target_name = argv[0];
-const target_version_range = package_json.peerDependencies[target_name];
+const target_version_range = package_json.peerDependencies[target_name].split(" ")[0];
 
 if (target_version_range === undefined) {
   throw new Error(`Invalid peer-dependency name '${target_name}'`);
@@ -23,3 +24,10 @@ const command = `yarn upgrade ${target_name}@${target_version} --no-lockfile`;
 
 console.log(`> ${command}`);
 execSync(command, { stdio: [0, 1, 2] });
+
+if (target_name === "gulp") {
+  fs.writeFileSync(
+    `${__dirname}/../gulpfile.ts`,
+    fs.readFileSync(`${__dirname}/../gulpfile-gulp-3.ts`)
+  );
+}

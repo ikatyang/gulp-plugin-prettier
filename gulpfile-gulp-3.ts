@@ -5,19 +5,17 @@ import * as prettier from './src/index';
 // tslint:disable-next-line:no-var-requires
 const sources = require('./tsconfig.json').include;
 
-function format() {
-  return gulp
+gulp.task('format', () =>
+  gulp
     .src(sources)
     .pipe(prettier.format(prettier_options, { filter: true }))
-    .pipe(gulp.dest(file => file.base));
-}
+    .pipe(gulp.dest(file => file.base)),
+);
 
-function format_check() {
-  return gulp
+gulp.task('format_check', () =>
+  gulp
     .src(sources)
     .pipe(
       prettier.format(prettier_options, { reporter: prettier.Reporter.Error }),
-    );
-}
-
-export { format, format_check };
+    ),
+);
