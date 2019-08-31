@@ -13,7 +13,7 @@ if (argv.length === 0) {
 const package_json = require(`${__dirname}/../package.json`);
 
 const target_name = argv[0];
-const target_version_range = package_json.peerDependencies[target_name];
+const target_version_range = package_json.peerDependencies[target_name].split(" ")[0];
 
 if (target_version_range === undefined) {
   throw new Error(`Invalid peer-dependency name '${target_name}'`);
