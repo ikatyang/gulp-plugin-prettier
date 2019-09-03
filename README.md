@@ -37,7 +37,7 @@ function format() {
 
 // throw error if there is unformatted file
 function format_check() {
-  gulp.src(['./src/**/*.ts', './gulpfile.ts'])
+  return gulp.src(['./src/**/*.ts', './gulpfile.ts'])
     .pipe(
       prettier.format({ singleQuote: true }, { reporter: prettier.Reporter.Error }),
     );
