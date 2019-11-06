@@ -42,7 +42,7 @@
     "@types/plugin-error": "0.1.1",
     "@types/prettier": "1.18.3",
     "@types/through2": "2.0.34",
-    "@types/vinyl": "2.0.3",
+    "@types/vinyl": "2.0.4",
     "gulp": "4.0.2",
     "jest": "21.2.1",
     "prettier": "1.18.2",
