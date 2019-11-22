@@ -82,10 +82,10 @@
   resolved "https://registry.yarnpkg.com/@types/plugin-error/-/plugin-error-0.1.1.tgz#22da36bc716285d2d1fbea7434ae3006f46801ba"
   integrity sha512-Up9nG/aPoFz+80/RY3TgSGa8Y0Ge/4jCyz6FLBkKHafFD+U8I3saMyncFqLUrtd0z05WhUCrR5/sMiML2aJNhA==
 
-"@types/prettier@1.18.3":
-  version "1.18.3"
-  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-1.18.3.tgz#64ff53329ce16139f17c3db9d3e0487199972cd8"
-  integrity sha512-48rnerQdcZ26odp+HOvDGX8IcUkYOCuMc2BodWYTe956MqkHlOGAG4oFQ83cjZ0a4GAgj7mb4GUClxYd2Hlodg==
+"@types/prettier@1.19.0":
+  version "1.19.0"
+  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-1.19.0.tgz#a2502fb7ce9b6626fdbfc2e2a496f472de1bdd05"
+  integrity sha512-gDE8JJEygpay7IjA/u3JiIURvwZW08f0cZSZLAzFoX/ZmeqvS0Sqv+97aKuHpNsalAMMhwPe+iAS6fQbfmbt7A==
 
 "@types/strip-bom@^3.0.0":
   version "3.0.0"
