@@ -53,7 +53,7 @@
     "tslint": "5.20.1",
     "tslint-config-ikatyang": "2.5.1",
     "tslint-config-prettier": "1.18.0",
-    "typescript": "2.9.2"
+    "typescript": "3.7.5"
   },
   "peerDependencies": {
     "gulp": "^3.9.0 || ^4.0.0",
