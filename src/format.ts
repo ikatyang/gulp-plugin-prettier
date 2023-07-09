@@ -39,14 +39,16 @@ export function format(
         ? await prettier.resolveConfig(filename)
         : null;
 
-    const formatted = prettier.format(text, {
-      ...resolved_config,
-      ...prettier_options,
-      filepath:
-        prettier_options.filepath !== undefined
-          ? prettier_options.filepath
-          : filename,
-    });
+    const formatted = await Promise.resolve(
+      prettier.format(text, {
+        ...resolved_config,
+        ...prettier_options,
+        filepath:
+          prettier_options.filepath !== undefined
+            ? prettier_options.filepath
+            : filename,
+      }),
+    );
 
     const different = formatted !== text;
 
